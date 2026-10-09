@@ -10,6 +10,13 @@ FILES = [
     "base.hpp",
     "prototype.hpp",
     "vector.hpp",
+    "pair.hpp",
+    "stl.hpp",
+    "utilities.hpp",
+    "seg_tree.hpp",
+    "math.hpp",
+    "bigint.hpp",
+    "data_structures.hpp",
 ]
 
 included = set()
