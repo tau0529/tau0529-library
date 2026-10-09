@@ -1821,13 +1821,13 @@ pair<int64_t, int64_t> extGCD(int64_t a, int64_t b) {
     return {x, y};
 }
 
-//中国剰余の定理 解無しは{0, -1}
+//中国剰余の定理 解無しは{0, 0}
 pair<int64_t, int64_t> CRT(const vector<int64_t> &b, const vector<int64_t> &m) {
     int64_t r = 0, M = 1;
     for (int64_t i = 0; i < (int64_t)b.size(); i++) {
         int64_t p, q;
         int64_t d = extendedGCD(M, m[i], p, q);
-        if (((__int128_t)b[i] - r) % d != 0) return {0, -1};
+        if (((__int128_t)b[i] - r) % d != 0) return {0, 0};
         int64_t md = m[i] / d;
         int64_t t = ((__int128_t)b[i] - r) / d * p % md;
         r = ((__int128_t)r + (__int128_t)M * t) % ((__int128_t)M * md);
