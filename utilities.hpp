@@ -10,18 +10,18 @@ using pll = pair<int64_t, int64_t>;
 using plp = pair<int64_t, pair<int64_t, int64_t>>;
 using ppl = pair<pair<int64_t, int64_t>, int64_t>;
 using ppp = pair<pair<int64_t, int64_t>, pair<int64_t, int64_t>>;
-template<typename T> using vc = vector<T>;
-template<typename T> using vv = vector<vector<T>>;
-template<typename T> using vvv = vector<vector<vector<T>>>;
-template<typename T> using vvvv = vector<vector<vector<vector<T>>>>;
+template <typename T> using vc = vector<T>;
+template <typename T> using vv = vector<vector<T>>;
+template <typename T> using vvv = vector<vector<vector<T>>>;
+template <typename T> using vvvv = vector<vector<vector<vector<T>>>>;
 using vl = vector<int64_t>;
 using vvl = vector<vector<int64_t>>;
 using vvvl = vector<vector<vector<int64_t>>>;
 using vvvvl = vector<vector<vector<vector<int64_t>>>>;
 using vd = vector<long double>;
 using vp = vector<pair<int64_t, int64_t>>;
-template<typename T> using pq = priority_queue<T, vector<T>>; // 大きい順
-template<typename T> using pqg = priority_queue<T, vector<T>, greater<T>>; // 小さい順
+template <typename T> using pq = priority_queue<T, vector<T>>; // 大きい順
+template <typename T> using pqg = priority_queue<T, vector<T>, greater<T>>; // 小さい順
 
 #define pb push_back
 #define mp make_pair
@@ -135,7 +135,7 @@ void yn(bool b) {
 
 
 //*経過時間
-long double Time () {
+long double Time() {
     return 1.0L * (clock()) / CLOCKS_PER_SEC;
 }
 

@@ -5,8 +5,6 @@
 //*プロトタイプ宣言
 template <typename T> istream &operator>>(istream &is, vector<T> &v);
 template <typename T> ostream &operator<<(ostream &os, const vector<T> &v);
-template <typename T> ostream &operator<<(ostream &os, const vector<vector<T>> &v);
-template <typename T> ostream &operator<<(ostream &os, const vector<vector<vector<T>>> &v);
 template <typename T1, typename T2> istream &operator>>(istream &is, pair<T1, T2> &p);
 template <typename T1, typename T2> ostream &operator<<(ostream &os, const pair<T1, T2> &p);
 template <typename T1, typename T2> ostream &operator<<(ostream &os, const map<T1, T2> &m);
@@ -33,35 +31,22 @@ istream &operator>>(istream &is, vector<T> &v) {
     return is;
 }
 template <typename T>
+constexpr int Vdepth(const T *) { return 0; }
+template <typename T>
+constexpr int Vdepth(const vector<T> *) { return Vdepth((T *)nullptr) + 1; }
+template <typename T>
 ostream &operator<<(ostream &os, const vector<T> &v) {
-    bool first = true;
-    for (const auto &x : v) {
-        if (!first) os << " ";
-        os << x;
-        first = false;
+    constexpr int n = Vdepth((T *)nullptr);
+    for (int i = 0; i < (int)v.size(); i++) {
+        if (i) {
+            if constexpr (n == 0) os << ' ';
+            else for (int j = 0; j < n; j++) os << '\n';
+        }
+        os << v[i];
     }
     return os;
 }
-template <typename T>
-ostream &operator<<(ostream &os, const vector<vector<T>> &v) {
-    bool first = true;
-    for (const auto &x : v) {
-        if (!first) os << "\n";
-        os << x;
-        first = false;
-    }
-    return os;
-}
-template <typename T>
-ostream &operator<<(ostream &os, const vector<vector<vector<T>>> &v) {
-    bool first = true;
-    for (const auto &x : v) {
-        if (!first) os << "\n\n";
-        os << x;
-        first = false;
-    }
-    return os;
-}
+
 
 //複数ベクター同時受け取り (各行にAi Biが書かれてるタイプ)
 template <typename T, typename... Ts>
