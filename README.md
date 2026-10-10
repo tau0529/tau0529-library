@@ -46,6 +46,17 @@ g++ -std=c++20 -O2 template.cpp -o main
 ## 機能紹介
 
 <details>
+<summary><b><code>base.hpp</code> — ベース</b></summary>
+  
+  `bits/stdc++.h`をインクルードして`using namespace std;`しています
+
+  ACLが読み込める場合も同様に全部インクルードして`using namespace atcoder;`です
+
+  ACLが読み込める場合は`HAS_ACL`を1に、読み込めない場合は0にしています
+
+</details>
+
+<details>
 <summary><b><code>io.hpp</code> — 入出力</b></summary>
 
 - 多次元`vector`の受け取り
