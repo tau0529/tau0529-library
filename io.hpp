@@ -30,10 +30,8 @@ istream &operator>>(istream &is, vector<T> &v) {
     for (T &x : v) is >> x;
     return is;
 }
-template <typename T>
-constexpr int Vdepth(const T *) { return 0; }
-template <typename T>
-constexpr int Vdepth(const vector<T> *) { return Vdepth((T *)nullptr) + 1; }
+template <typename T> constexpr int Vdepth(const T *) { return 0; }
+template <typename T> constexpr int Vdepth(const vector<T> *) { return Vdepth((T *)nullptr) + 1; }
 template <typename T>
 ostream &operator<<(ostream &os, const vector<T> &v) {
     constexpr int n = Vdepth((T *)nullptr);
@@ -46,7 +44,6 @@ ostream &operator<<(ostream &os, const vector<T> &v) {
     }
     return os;
 }
-
 
 //複数ベクター同時受け取り (各行にAi Biが書かれてるタイプ)
 template <typename T, typename... Ts>
