@@ -62,5 +62,3 @@ int main() {
 OUTPUT.write_text(code, encoding="utf-8")
 print(f"生成完了: {OUTPUT}")
 print(f"文字数: {len(code)}")
-
-# 実行 python3 build.py
