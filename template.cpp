@@ -326,6 +326,11 @@ template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operato
 template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator*(const vector<T1> &v, const T2 &a);
 template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator/(const vector<T1> &v, const T2 &a);
 template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator%(const vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T1>) vector<T2> operator+(const T1 &a, const vector<T2> &v);
+template <typename T1, typename T2> requires (!is_vector<T1>) vector<T2> operator-(const T1 &a, const vector<T2> &v);
+template <typename T1, typename T2> requires (!is_vector<T1>) vector<T2> operator*(const T1 &a, const vector<T2> &v);
+template <typename T1, typename T2> requires (!is_vector<T1>) vector<T2> operator/(const T1 &a, const vector<T2> &v);
+template <typename T1, typename T2> requires (!is_vector<T1>) vector<T2> operator%(const T1 &a, const vector<T2> &v);
 template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator+=(vector<T1> &v, const T2 &a);
 template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator-=(vector<T1> &v, const T2 &a);
 template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator*=(vector<T1> &v, const T2 &a);
@@ -354,6 +359,11 @@ template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1
 template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator*(const pair<T1, T2> &p, const T3 &a);
 template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator/(const pair<T1, T2> &p, const T3 &a);
 template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator%(const pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T1>) pair<T2, T3> operator+(const T1 &a, const pair<T2, T3> &p);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T1>) pair<T2, T3> operator-(const T1 &a, const pair<T2, T3> &p);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T1>) pair<T2, T3> operator*(const T1 &a, const pair<T2, T3> &p);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T1>) pair<T2, T3> operator/(const T1 &a, const pair<T2, T3> &p);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T1>) pair<T2, T3> operator%(const T1 &a, const pair<T2, T3> &p);
 template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator+=(pair<T1, T2> &p, const T3 &a);
 template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator-=(pair<T1, T2> &p, const T3 &a);
 template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator*=(pair<T1, T2> &p, const T3 &a);
@@ -409,6 +419,38 @@ requires (!is_vector<T2>)
 vector<T1> operator%(const vector<T1> &v, const T2 &a) {
     vector<T1> res = v;
     res %= a;
+    return res;
+}
+
+template <typename T1, typename T2>
+requires (!is_vector<T1>)
+vector<T2> operator+(const T1 &a, const vector<T2> &v) {
+    return v + a;
+}
+template <typename T1, typename T2>
+requires (!is_vector<T1>)
+vector<T2> operator-(const T1 &a, const vector<T2> &v) {
+    vector<T2> res = v;
+    for (auto &x : res) x = a - x;
+    return res;
+}
+template <typename T1, typename T2>
+requires (!is_vector<T1>)
+vector<T2> operator*(const T1 &a, const vector<T2> &v) {
+    return v * a;
+}
+template <typename T1, typename T2>
+requires (!is_vector<T1>)
+vector<T2> operator/(const T1 &a, const vector<T2> &v) {
+    vector<T2> res = v;
+    for (auto &x : res) x = a / x;
+    return res;
+}
+template <typename T1, typename T2>
+requires (!is_vector<T1>)
+vector<T2> operator%(const T1 &a, const vector<T2> &v) {
+    vector<T2> res = v;
+    for (auto &x : res) x = a % x;
     return res;
 }
 
@@ -565,6 +607,41 @@ requires (!is_pair<T3>)
 pair<T1, T2> operator%(const pair<T1, T2> &p, const T3 &a) {
     pair<T1, T2> res = p;
     res %= a;
+    return res;
+}
+
+template <typename T1, typename T2, typename T3>
+requires (!is_pair<T1>)
+pair<T2, T3> operator+(const T1 &a, const pair<T2, T3> &p) {
+    return p + a;
+}
+template <typename T1, typename T2, typename T3>
+requires (!is_pair<T1>)
+pair<T2, T3> operator-(const T1 &a, const pair<T2, T3> &p) {
+    pair<T2, T3> res = p;
+    res.first = a - res.first;
+    res.second = a - res.second;
+    return res;
+}
+template <typename T1, typename T2, typename T3>
+requires (!is_pair<T1>)
+pair<T2, T3> operator*(const T1 &a, const pair<T2, T3> &p) {
+    return p * a;
+}
+template <typename T1, typename T2, typename T3>
+requires (!is_pair<T1>)
+pair<T2, T3> operator/(const T1 &a, const pair<T2, T3> &p) {
+    pair<T2, T3> res = p;
+    res.first = a / res.first;
+    res.second = a / res.second;
+    return res;
+}
+template <typename T1, typename T2, typename T3>
+requires (!is_pair<T1>)
+pair<T2, T3> operator%(const T1 &a, const pair<T2, T3> &p) {
+    pair<T2, T3> res = p;
+    res.first = a % res.first;
+    res.second = a % res.second;
     return res;
 }
 
