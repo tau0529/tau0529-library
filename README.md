@@ -50,6 +50,13 @@ g++ -std=c++20 -O2 template.cpp -o main
 
 - 多次元vectorの受け取り
 多次元ベクターの出力
+```cpp
+vector<vector<vector<int>>> v = {
+    {{1, 2}, {3, 4}},
+    {{5, 6}, {7, 8}}
+};
+cout << v;
+```
 
 
 </details>
