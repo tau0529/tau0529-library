@@ -163,3 +163,158 @@ bool CHMAX(T1 &x, const T2 &y) {
     if (x < y) x = y;
     return x == y;
 }
+
+
+//*リストの操作
+//小さい順
+template <typename T>
+void Vsort(T &v) {
+    sort(v.begin(), v.end());
+}
+
+//大きい順
+template <typename T>
+void Vsortg(T &v) {
+    sort(v.rbegin(), v.rend());
+}
+
+//リバース
+template <typename T>
+void Vreverse(T &v) {
+    reverse(v.begin(), v.end());
+}
+
+//重複の削除 ソート必須！
+template <typename T>
+void Vunique(T &v) {
+    v.erase(unique(v.begin(), v.end()), v.end());
+}
+
+//上下反転
+template <typename T>
+void UDflip(vector<T> &v) {
+    reverse(v.begin(), v.end());
+}
+
+//左右反転
+template <typename T>
+void LRflip(vector<T> &v) {
+    for (auto &x : v) reverse(x.begin(), x.end());
+}
+
+//左シフト
+template <typename T>
+void Vrotate(T &v, int64_t n) {
+    if (v.empty()) return;
+    n %= (int64_t)v.size();
+    if (n < 0) n += (int64_t)v.size();
+    rotate(v.begin(), v.begin() + n, v.end());
+}
+
+//最小値
+template <typename T>
+auto Vmin(const T &v) {
+    assert(!v.empty());
+    return *min_element(v.begin(), v.end());
+}
+
+//最大値
+template <typename T>
+auto Vmax(const T &v) {
+    assert(!v.empty());
+    return *max_element(v.begin(), v.end());
+}
+
+//総和
+template <typename T>
+T Vsum(const vector<T> &v) {
+    return accumulate(v.begin(), v.end(), T(0));
+}
+
+//ソートしたindexを取得
+template <typename T>
+vector<int> Vargsort(const vector<T> &v) {
+    vector<int> res(v.size());
+    iota(res.begin(), res.end(), 0);
+    sort(res.begin(), res.end(), [&](int i, int j) {
+        if (v[i] != v[j]) return v[i] < v[j];
+        return i < j;
+    });
+    return res;
+}
+//大きい順ソートしたindexを取得
+template <typename T>
+vector<int> Vargsortg(const vector<T> &v) {
+    vector<int> res(v.size());
+    iota(res.begin(), res.end(), 0);
+    sort(res.begin(), res.end(), [&](int i, int j) {
+        if (v[i] != v[j]) return v[i] > v[j];
+        return i < j;
+    });
+    return res;
+}
+
+//右回転
+template <typename T>
+void VVrotate(vector<vector<T>> &v) {
+    if (v.empty() || v[0].empty()) return;
+    int H = v.size();
+    int W = v[0].size();
+    vector<vector<T>> res(W, vector<T>(H));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            res[j][H - i - 1] = v[i][j];
+        }
+    }
+    v = move(res);
+}
+void VVrotate(vector<string> &v) {
+    if (v.empty() || v[0].empty()) return;
+    int H = v.size();
+    int W = v[0].size();
+    vector<string> res(W, string(H, ' '));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            res[j][H - i - 1] = v[i][j];
+        }
+    }
+    v = move(res);
+}
+
+//左回転
+template <typename T>
+void VVrotateg(vector<vector<T>> &v) {
+    if (v.empty() || v[0].empty()) return;
+    int H = v.size();
+    int W = v[0].size();
+    vector<vector<T>> res(W, vector<T>(H));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            res[W - j - 1][i] = v[i][j];
+        }
+    }
+    v = move(res);
+}
+void VVrotateg(vector<string> &v) {
+    if (v.empty() || v[0].empty()) return;
+    int H = v.size();
+    int W = v[0].size();
+    vector<string> res(W, string(H, ' '));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            res[W - j - 1][i] = v[i][j];
+        }
+    }
+    v = move(res);
+}
+
+
+//*pairの操作
+template<typename T>
+void Pswap(pair<T, T> &p) {
+    swap(p.first, p.second);
+}
+template<typename T>
+void Pswap(vector<pair<T, T>> &v) {
+    for (auto &p : v) swap(p.first, p.second);
+}

@@ -1,9 +1,103 @@
 #pragma once
-#include "prototype.hpp"
+#include "base.hpp"
 
-//!その他STL関連
-//*入出力
-//map
+//!入出力
+//*プロトタイプ宣言
+template <typename T> istream &operator>>(istream &is, vector<T> &v);
+template <typename T> ostream &operator<<(ostream &os, const vector<T> &v);
+template <typename T> ostream &operator<<(ostream &os, const vector<vector<T>> &v);
+template <typename T> ostream &operator<<(ostream &os, const vector<vector<vector<T>>> &v);
+template <typename T1, typename T2> istream &operator>>(istream &is, pair<T1, T2> &p);
+template <typename T1, typename T2> ostream &operator<<(ostream &os, const pair<T1, T2> &p);
+template <typename T1, typename T2> ostream &operator<<(ostream &os, const map<T1, T2> &m);
+template <typename T> ostream &operator<<(ostream &os, const set<T> &s);
+template <typename T> ostream &operator<<(ostream &os, const multiset<T> &s);
+template <typename T1, typename T2> ostream &operator<<(ostream &os, const unordered_map<T1, T2> &m);
+template <typename T> ostream &operator<<(ostream &os, const unordered_set<T> &s);
+template <typename T> ostream &operator<<(ostream &os, queue<T> q);
+template <class T, class Container, class Compare> ostream &operator<<(ostream &os, priority_queue<T, Container, Compare> q);
+template <typename T> ostream &operator<<(ostream &os, const deque<T> &q);
+template <typename T> ostream &operator<<(ostream &os, stack<T> s);
+#if HAS_ACL
+    template <int m> istream &operator>>(istream &is, static_modint<m> &i);
+    template <int id> istream &operator>>(istream &is, dynamic_modint<id> &i);
+    template <int m> ostream &operator<<(ostream &os, const static_modint<m> &i);
+    template <int id> ostream &operator<<(ostream &os, const dynamic_modint<id> &i);
+#endif
+
+
+//*vector
+template <typename T>
+istream &operator>>(istream &is, vector<T> &v) {
+    for (T &x : v) is >> x;
+    return is;
+}
+template <typename T>
+ostream &operator<<(ostream &os, const vector<T> &v) {
+    bool first = true;
+    for (const auto &x : v) {
+        if (!first) os << " ";
+        os << x;
+        first = false;
+    }
+    return os;
+}
+template <typename T>
+ostream &operator<<(ostream &os, const vector<vector<T>> &v) {
+    bool first = true;
+    for (const auto &x : v) {
+        if (!first) os << "\n";
+        os << x;
+        first = false;
+    }
+    return os;
+}
+template <typename T>
+ostream &operator<<(ostream &os, const vector<vector<vector<T>>> &v) {
+    bool first = true;
+    for (const auto &x : v) {
+        if (!first) os << "\n\n";
+        os << x;
+        first = false;
+    }
+    return os;
+}
+
+//複数ベクター同時受け取り (各行にAi Biが書かれてるタイプ)
+template <typename T, typename... Ts>
+void vcin(vector<T> &first, vector<Ts> &... rest) {
+    assert(((rest.size() == first.size()) && ...));
+    for (int i = 0; i < (int)first.size(); i++) {
+        cin >> first[i], (cin >> ... >> rest[i]);
+    }
+}
+
+//ジャグ配列
+template <typename T>
+void jagcin(vector<vector<T>> &vv) {
+    for (auto &v : vv) {
+        int k;
+        cin >> k;
+        v.resize(k);
+        cin >> v;
+    }
+}
+
+
+//*pair
+template <typename T1, typename T2>
+istream &operator>>(istream &is, pair<T1, T2> &p) {
+    is >> p.first >> p.second;
+    return is;
+}
+template <typename T1, typename T2>
+ostream &operator<<(ostream &os, const pair<T1, T2> &p) {
+    os << "(" << p.first << "," << p.second << ")";
+    return os;
+}
+
+
+//*map
 template <typename T1, typename T2>
 void mapcin(map<T1, T2> &m, int n) {
     for (int i = 0; i < n; i++) {
@@ -23,7 +117,8 @@ ostream &operator<<(ostream &os, const map<T1, T2> &m) {
     return os;
 }
 
-//set
+
+//*set
 template <typename T>
 void setcin(set<T> &s, int n) {
     for (int i = 0; i < n; i++) {
@@ -43,7 +138,8 @@ ostream &operator<<(ostream &os, const set<T> &s) {
     return os;
 }
 
-//multiset
+
+//*multiset
 template <typename T>
 void setcin(multiset<T> &s, int n) {
     for (int i = 0; i < n; i++) {
@@ -63,7 +159,8 @@ ostream &operator<<(ostream &os, const multiset<T> &s) {
     return os;
 }
 
-//unordered_map
+
+//*unordered_map
 template <typename T1, typename T2>
 void mapcin(unordered_map<T1, T2> &m, int n) {
     for (int i = 0; i < n; i++) {
@@ -83,7 +180,8 @@ ostream &operator<<(ostream &os, const unordered_map<T1, T2> &m) {
     return os;
 }
 
-//unordered_set
+
+//*unordered_set
 template <typename T>
 void setcin(unordered_set<T> &s, int n) {
     for (int i = 0; i < n; i++) {
@@ -103,7 +201,8 @@ ostream &operator<<(ostream &os, const unordered_set<T> &s) {
     return os;
 }
 
-//queue
+
+//*queue
 template <typename T>
 void queuecin(queue<T> &q, int n) {
     for (int i = 0; i < n; i++) {
@@ -124,7 +223,8 @@ ostream &operator<<(ostream &os, queue<T> q) {
     return os;
 }
 
-//priority_queue
+
+//*priority_queue
 template <class T, class Container, class Compare>
 void queuecin(priority_queue<T, Container, Compare> &q, int n) {
     for (int i = 0; i < n; i++) {
@@ -145,7 +245,8 @@ ostream &operator<<(ostream &os, priority_queue<T, Container, Compare> q) {
     return os;
 }
 
-//deque
+
+//*deque
 template <typename T>
 void dequecin(deque<T> &q, int n) {
     for (int i = 0; i < n; i++) {
@@ -169,7 +270,8 @@ ostream &operator<<(ostream &os, const deque<T> &q) {
     return os;
 }
 
-//stack
+
+//*stack
 template <typename T>
 void stackcin(stack<T> &s, int n) {
     for (int i = 0; i < n; i++) {
@@ -190,7 +292,8 @@ ostream &operator<<(ostream &os, stack<T> s) {
     return os;
 }
 
-//modint
+
+//*modint
 #if HAS_ACL
     template <int m>
     istream &operator>>(istream &is, static_modint<m> &i) {
