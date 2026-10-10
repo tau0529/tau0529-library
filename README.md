@@ -210,3 +210,24 @@ g++ -std=c++20 -O2 template.cpp -o main
   
   </details>
 </details>
+
+<details>
+<summary><b><code>operators</code> ― オペレーター</b></summary>
+
+- <details>
+  <summary><code>vector</code>と定数の四則演算が出来ます</summary>
+
+  四則演算と複合代入演算子、インクリメントデクリメントをオーバーロードしています
+
+  例
+
+  ```cpp
+  vector<int> L = {1, 2, 4, 7};
+  L += 3; // L = {4, 5, 7, 10}
+  L %= 4; // L = {0, 1, 3, 2}
+  L--; // L = {-1, 0, 2, 1}
+  cout << 2 * L << endl; // -2 0 4 2
+  ```
+
+  </details>
+</details>
