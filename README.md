@@ -140,7 +140,9 @@ g++ -std=c++20 -O2 template.cpp -o main
 - <details>
   <summary><code>map</code>, <code>unordered_map</code>の受け取り - <code>mapcin</code></summary>
 
-  `mapcin(M, N)`とすると`N`個`key`と`value`を受け取ります 重複している場合後者が優先されます
+  `mapcin(M, N)`とすると`N`個`key`と`value`を受け取ります
+
+  重複している場合後者が優先されます
 
   </details>
 - <details>
