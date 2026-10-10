@@ -66,20 +66,20 @@ g++ -std=c++20 -O2 template.cpp -o main
   ```text
   1 2
   3 4
-  
+
   5 6
   7 8
-  
-  
+
+
   9 10
   11 12
-  
-  
+
+
   13 14
   15 16
   ```
 - 複数のvectorの同時受け取り - vcin
-    
+
   各行にAi Bi Ciの用に入力が与えられる際にA,B,Cを受け取れます
 
   入力例
@@ -123,5 +123,5 @@ g++ -std=c++20 -O2 template.cpp -o main
   jagcin(L);
   //L = {{1, 2, 3}, {1, 3}, {3, 2, 1, 4, 3}}
   ```
-  
+
 </details>
