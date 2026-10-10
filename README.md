@@ -1,6 +1,6 @@
 # tau0529-library
 
-競技プロ用の自作C++ライブラリです。
+競プロ用の自作C++ライブラリです。
 
 ## ファイル構成
 
@@ -49,7 +49,8 @@ g++ -std=c++20 -O2 template.cpp -o main
 <summary><b>io.hpp — 入出力</b></summary>
 
 - 多次元vectorの受け取り
-- 多次元vectorの出力
+- <details>
+  <summary>多次元vectorの出力</summary>
 
   2次元以降は改行が1つずつ増えます
 
@@ -78,9 +79,11 @@ g++ -std=c++20 -O2 template.cpp -o main
   13 14
   15 16
   ```
-- 複数のvectorの同時受け取り - vcin
+  </details>
+- <details>
+  <summary>複数のvectorの同時受け取り - vcin</summary>
 
-  各行にAi Bi Ciの用に入力が与えられる際にA,B,Cを受け取れます
+  各行にAi Bi Ciのように複数の数値が与えられる際にそれぞれを別のvectorにまとめて受け取れます
 
   入力例
 
@@ -101,7 +104,9 @@ g++ -std=c++20 -O2 template.cpp -o main
   //A = {1, 1, 2}  B = {2, 3, 3}
   ```
 
-- ジャグ配列の受け取り - jagcin
+  </details>
+- <details>
+  <summary>ジャグ配列の受け取り - jagcin</summary>
 
   ジャグ配列を受け取れます
 
@@ -124,4 +129,71 @@ g++ -std=c++20 -O2 template.cpp -o main
   //L = {{1, 2, 3}, {1, 3}, {3, 2, 1, 4, 3}}
   ```
 
+  </details>
+- pairの受け取り
+- <details>
+  <summary>pairの出力</summary>
+  
+  (first, second)という形式で出力します
+
+  </details>
+- <details>
+  <summary>map, unordered_mapの受け取り - mapcin</summary>
+
+  mapcin(M, N)とするとN個keyとvalueを受け取ります 重複している場合後者が優先されます
+
+  </details>
+- <details>
+  <summary>map, unordered_mapの出力</summary>
+
+  key:valueという形式で半角スペース区切りで出力します
+
+  </details>
+- <details>
+  <summary>set, multiset, unordered_setの受け取り - setcin</summary>
+
+  setcin(S, N)とするとN個受け取りinsertします
+  
+  </details>
+- set, multiset, unordered_setの出力
+- <details>
+  <summary>queue, priority_queue, dequeの受け取り - queuecin</summary>
+
+  queuecin(Q, N)とするとN個受け取りpush/push_backします
+
+  dequeに限りdequecin(Q, N)でも動作します
+  
+  </details>
+- <details>
+  <summary>queue, priority_queue, dequeの出力</summary>
+  
+  queueなら取り出した順、dequeならfront側から順に半角スペース区切りで出力します
+
+  </details>
+- <details>
+  <summary>stackの受け取り - stackcin</summary>
+
+  stackcin(S, N)とするとN個受け取りpushします
+
+  </details>
+- <details>
+  <summary>stackの出力</summary>
+  
+  積まれている順番のまま半角スペース区切りで出力します
+  
+  </details>
+- <details>
+  <summary>modintの受け取り</summary>
+
+  ACLがinclude出来ている場合modintを直接受け取れるようにします
+
+  modint998244353, modint1000000007, modintどれでも動きます
+  
+  </details>
+- <details>
+  <summary>modintの出力</summary>
+
+  modintのvalの部分を出力します
+  
+  </details>
 </details>
