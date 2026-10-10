@@ -12,72 +12,14 @@ using namespace std;
 
 
 
-//!プロトタイプ宣言
-//*vector関連
-template <typename T> inline constexpr bool is_vector = false;
-template <typename T> inline constexpr bool is_vector<vector<T>> = true;
+//!入出力
+//*プロトタイプ宣言
 template <typename T> istream &operator>>(istream &is, vector<T> &v);
 template <typename T> ostream &operator<<(ostream &os, const vector<T> &v);
 template <typename T> ostream &operator<<(ostream &os, const vector<vector<T>> &v);
 template <typename T> ostream &operator<<(ostream &os, const vector<vector<vector<T>>> &v);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator+(const vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator-(const vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator*(const vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator/(const vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator%(const vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator+=(vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator-=(vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator*=(vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator/=(vector<T1> &v, const T2 &a);
-template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator%=(vector<T1> &v, const T2 &a);
-template <typename T> vector<T> &operator++(vector<T> &v);
-template <typename T> vector<T> &operator--(vector<T> &v);
-template <typename T> vector<T> operator++(vector<T> &v, int);
-template <typename T> vector<T> operator--(vector<T> &v, int);
-template <typename T> vector<T> operator+(const vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> operator-(const vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> operator*(const vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> operator/(const vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> operator%(const vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> &operator+=(vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> &operator-=(vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> &operator*=(vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> &operator/=(vector<T> &v1, const vector<T> &v2);
-template <typename T> vector<T> &operator%=(vector<T> &v1, const vector<T> &v2);
-
-
-//*pair関連
-template <typename T> inline constexpr bool is_pair = false;
-template <typename T1, typename T2> inline constexpr bool is_pair<pair<T1, T2>> = true;
 template <typename T1, typename T2> istream &operator>>(istream &is, pair<T1, T2> &p);
 template <typename T1, typename T2> ostream &operator<<(ostream &os, const pair<T1, T2> &p);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator+(const pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator-(const pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator*(const pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator/(const pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator%(const pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator+=(pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator-=(pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator*=(pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator/=(pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator%=(pair<T1, T2> &p, const T3 &a);
-template <typename T1, typename T2> pair<T1, T2> &operator++(pair<T1, T2> &p);
-template <typename T1, typename T2> pair<T1, T2> &operator--(pair<T1, T2> &p);
-template <typename T1, typename T2> pair<T1, T2> operator++(pair<T1, T2> &p, int);
-template <typename T1, typename T2> pair<T1, T2> operator--(pair<T1, T2> &p, int);
-template <typename T1, typename T2> pair<T1, T2> operator+(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> operator-(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> operator*(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> operator/(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> operator%(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> &operator+=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> &operator-=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> &operator*=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> &operator/=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
-template <typename T1, typename T2> pair<T1, T2> &operator%=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
-
-
-//*その他STL関連
 template <typename T1, typename T2> ostream &operator<<(ostream &os, const map<T1, T2> &m);
 template <typename T> ostream &operator<<(ostream &os, const set<T> &s);
 template <typename T> ostream &operator<<(ostream &os, const multiset<T> &s);
@@ -95,9 +37,7 @@ template <typename T> ostream &operator<<(ostream &os, stack<T> s);
 #endif
 
 
-
-//!vector関連
-//*入出力
+//*vector
 template <typename T>
 istream &operator>>(istream &is, vector<T> &v) {
     for (T &x : v) is >> x;
@@ -153,6 +93,304 @@ void jagcin(vector<vector<T>> &vv) {
         cin >> v;
     }
 }
+
+
+//*pair
+template <typename T1, typename T2>
+istream &operator>>(istream &is, pair<T1, T2> &p) {
+    is >> p.first >> p.second;
+    return is;
+}
+template <typename T1, typename T2>
+ostream &operator<<(ostream &os, const pair<T1, T2> &p) {
+    os << "(" << p.first << "," << p.second << ")";
+    return os;
+}
+
+
+//*map
+template <typename T1, typename T2>
+void mapcin(map<T1, T2> &m, int n) {
+    for (int i = 0; i < n; i++) {
+        T1 x; T2 y;
+        cin >> x >> y;
+        m[x] = y;
+    }
+}
+template <typename T1, typename T2>
+ostream &operator<<(ostream &os, const map<T1, T2> &m) {
+    bool first = true;
+    for (const auto &[key, val] : m) {
+        if (!first) os << " ";
+        os << key << ":" << val;
+        first = false;
+    }
+    return os;
+}
+
+
+//*set
+template <typename T>
+void setcin(set<T> &s, int n) {
+    for (int i = 0; i < n; i++) {
+        T x;
+        cin >> x;
+        s.insert(x);
+    }
+}
+template <typename T>
+ostream &operator<<(ostream &os, const set<T> &s) {
+    bool first = true;
+    for (const auto &x : s) {
+        if (!first) os << " ";
+        os << x;
+        first = false;
+    }
+    return os;
+}
+
+
+//*multiset
+template <typename T>
+void setcin(multiset<T> &s, int n) {
+    for (int i = 0; i < n; i++) {
+        T x;
+        cin >> x;
+        s.insert(x);
+    }
+}
+template <typename T>
+ostream &operator<<(ostream &os, const multiset<T> &s) {
+    bool first = true;
+    for (const auto &x : s) {
+        if (!first) os << " ";
+        os << x;
+        first = false;
+    }
+    return os;
+}
+
+
+//*unordered_map
+template <typename T1, typename T2>
+void mapcin(unordered_map<T1, T2> &m, int n) {
+    for (int i = 0; i < n; i++) {
+        T1 x; T2 y;
+        cin >> x >> y;
+        m[x] = y;
+    }
+}
+template <typename T1, typename T2>
+ostream &operator<<(ostream &os, const unordered_map<T1, T2> &m) {
+    bool first = true;
+    for (const auto &[key, val] : m) {
+        if (!first) os << " ";
+        os << key << ":" << val;
+        first = false;
+    }
+    return os;
+}
+
+
+//*unordered_set
+template <typename T>
+void setcin(unordered_set<T> &s, int n) {
+    for (int i = 0; i < n; i++) {
+        T x;
+        cin >> x;
+        s.insert(x);
+    }
+}
+template <typename T>
+ostream &operator<<(ostream &os, const unordered_set<T> &s) {
+    bool first = true;
+    for (const auto &x : s) {
+        if (!first) os << " ";
+        os << x;
+        first = false;
+    }
+    return os;
+}
+
+
+//*queue
+template <typename T>
+void queuecin(queue<T> &q, int n) {
+    for (int i = 0; i < n; i++) {
+        T x;
+        cin >> x;
+        q.push(x);
+    }
+}
+template <typename T>
+ostream &operator<<(ostream &os, queue<T> q) {
+    bool first = true;
+    while (!q.empty()) {
+        if (!first) os << " ";
+        os << q.front();
+        q.pop();
+        first = false;
+    }
+    return os;
+}
+
+
+//*priority_queue
+template <class T, class Container, class Compare>
+void queuecin(priority_queue<T, Container, Compare> &q, int n) {
+    for (int i = 0; i < n; i++) {
+        T x;
+        cin >> x;
+        q.push(x);
+    }
+}
+template <class T, class Container, class Compare>
+ostream &operator<<(ostream &os, priority_queue<T, Container, Compare> q) {
+    bool first = true;
+    while (!q.empty()) {
+        if (!first) os << " ";
+        os << q.top();
+        q.pop();
+        first = false;
+    }
+    return os;
+}
+
+
+//*deque
+template <typename T>
+void dequecin(deque<T> &q, int n) {
+    for (int i = 0; i < n; i++) {
+        T x;
+        cin >> x;
+        q.push_back(x);
+    }
+}
+template <typename T>
+void queuecin(deque<T> &q, int n) {
+    dequecin(q, n);
+}
+template <typename T>
+ostream &operator<<(ostream &os, const deque<T> &q) {
+    bool first = true;
+    for (const auto &x : q) {
+        if (!first) os << " ";
+        os << x;
+        first = false;
+    }
+    return os;
+}
+
+
+//*stack
+template <typename T>
+void stackcin(stack<T> &s, int n) {
+    for (int i = 0; i < n; i++) {
+        T x;
+        cin >> x;
+        s.push(x);
+    }
+}
+template <typename T>
+ostream &operator<<(ostream &os, stack<T> s) {
+    bool first = true;
+    while (!s.empty()) {
+        if (!first) os << " ";
+        os << s.top();
+        s.pop();
+        first = false;
+    }
+    return os;
+}
+
+
+//*modint
+#if HAS_ACL
+    template <int m>
+    istream &operator>>(istream &is, static_modint<m> &i) {
+        int64_t x;
+        is >> x;
+        i = x;
+        return is;
+    }
+    template <int id>
+    istream &operator>>(istream &is, dynamic_modint<id> &i) {
+        int64_t x;
+        is >> x;
+        i = x;
+        return is;
+    }
+    template <int m>
+    ostream &operator<<(ostream &os, const static_modint<m> &i) {
+        os << i.val();
+        return os;
+    }
+    template <int id>
+    ostream &operator<<(ostream &os, const dynamic_modint<id> &i) {
+        os << i.val();
+        return os;
+    }
+#endif
+
+
+
+//!演算
+//*プロトタイプ宣言
+//vector
+template <typename T> inline constexpr bool is_vector = false;
+template <typename T> inline constexpr bool is_vector<vector<T>> = true;
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator+(const vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator-(const vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator*(const vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator/(const vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> operator%(const vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator+=(vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator-=(vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator*=(vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator/=(vector<T1> &v, const T2 &a);
+template <typename T1, typename T2> requires (!is_vector<T2>) vector<T1> &operator%=(vector<T1> &v, const T2 &a);
+template <typename T> vector<T> &operator++(vector<T> &v);
+template <typename T> vector<T> &operator--(vector<T> &v);
+template <typename T> vector<T> operator++(vector<T> &v, int);
+template <typename T> vector<T> operator--(vector<T> &v, int);
+template <typename T> vector<T> operator+(const vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> operator-(const vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> operator*(const vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> operator/(const vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> operator%(const vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> &operator+=(vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> &operator-=(vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> &operator*=(vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> &operator/=(vector<T> &v1, const vector<T> &v2);
+template <typename T> vector<T> &operator%=(vector<T> &v1, const vector<T> &v2);
+
+//pair
+template <typename T> inline constexpr bool is_pair = false;
+template <typename T1, typename T2> inline constexpr bool is_pair<pair<T1, T2>> = true;
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator+(const pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator-(const pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator*(const pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator/(const pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> operator%(const pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator+=(pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator-=(pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator*=(pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator/=(pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2, typename T3> requires (!is_pair<T3>) pair<T1, T2> &operator%=(pair<T1, T2> &p, const T3 &a);
+template <typename T1, typename T2> pair<T1, T2> &operator++(pair<T1, T2> &p);
+template <typename T1, typename T2> pair<T1, T2> &operator--(pair<T1, T2> &p);
+template <typename T1, typename T2> pair<T1, T2> operator++(pair<T1, T2> &p, int);
+template <typename T1, typename T2> pair<T1, T2> operator--(pair<T1, T2> &p, int);
+template <typename T1, typename T2> pair<T1, T2> operator+(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> operator-(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> operator*(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> operator/(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> operator%(const pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> &operator+=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> &operator-=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> &operator*=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> &operator/=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
+template <typename T1, typename T2> pair<T1, T2> &operator%=(pair<T1, T2> &p1, const pair<T1, T2> &p2);
 
 
 //*vectorと定数の演算
@@ -222,6 +460,7 @@ vector<T1> &operator%=(vector<T1> &v, const T2 &a) {
     for (auto &x : v) x %= a;
     return v;
 }
+
 template <typename T>
 vector<T> &operator++(vector<T> &v) {
     for (auto &x : v) ++x;
@@ -310,165 +549,6 @@ vector<T> &operator%=(vector<T> &v1, const vector<T> &v2) {
 }
 
 
-//*リストの操作
-//小さい順
-template <typename T>
-void Vsort(T &v) {
-    sort(v.begin(), v.end());
-}
-
-//大きい順
-template <typename T>
-void Vsortg(T &v) {
-    sort(v.rbegin(), v.rend());
-}
-
-//リバース
-template <typename T>
-void Vreverse(T &v) {
-    reverse(v.begin(), v.end());
-}
-
-//重複の削除 ソート必須！
-template <typename T>
-void Vunique(T &v) {
-    v.erase(unique(v.begin(), v.end()), v.end());
-}
-
-//上下反転
-template <typename T>
-void UDflip(vector<T> &v) {
-    reverse(v.begin(), v.end());
-}
-
-//左右反転
-template <typename T>
-void LRflip(vector<T> &v) {
-    for (auto &x : v) reverse(x.begin(), x.end());
-}
-
-//左シフト
-template <typename T>
-void Vrotate(T &v, int64_t n) {
-    if (v.empty()) return;
-    n %= (int64_t)v.size();
-    if (n < 0) n += (int64_t)v.size();
-    rotate(v.begin(), v.begin() + n, v.end());
-}
-
-//最小値
-template <typename T>
-auto Vmin(const T &v) {
-    assert(!v.empty());
-    return *min_element(v.begin(), v.end());
-}
-
-//最大値
-template <typename T>
-auto Vmax(const T &v) {
-    assert(!v.empty());
-    return *max_element(v.begin(), v.end());
-}
-
-//総和
-template <typename T>
-T Vsum(const vector<T> &v) {
-    return accumulate(v.begin(), v.end(), T(0));
-}
-
-//ソートしたindexを取得
-template <typename T>
-vector<int> Vargsort(const vector<T> &v) {
-    vector<int> res(v.size());
-    iota(res.begin(), res.end(), 0);
-    sort(res.begin(), res.end(), [&](int i, int j) {
-        if (v[i] != v[j]) return v[i] < v[j];
-        return i < j;
-    });
-    return res;
-}
-//大きい順ソートしたindexを取得
-template <typename T>
-vector<int> Vargsortg(const vector<T> &v) {
-    vector<int> res(v.size());
-    iota(res.begin(), res.end(), 0);
-    sort(res.begin(), res.end(), [&](int i, int j) {
-        if (v[i] != v[j]) return v[i] > v[j];
-        return i < j;
-    });
-    return res;
-}
-
-//右回転
-template <typename T>
-void VVrotate(vector<vector<T>> &v) {
-    if (v.empty() || v[0].empty()) return;
-    int H = v.size();
-    int W = v[0].size();
-    vector<vector<T>> res(W, vector<T>(H));
-    for (int i = 0; i < H; i++) {
-        for (int j = 0; j < W; j++) {
-            res[j][H - i - 1] = v[i][j];
-        }
-    }
-    v = move(res);
-}
-void VVrotate(vector<string> &v) {
-    if (v.empty() || v[0].empty()) return;
-    int H = v.size();
-    int W = v[0].size();
-    vector<string> res(W, string(H, ' '));
-    for (int i = 0; i < H; i++) {
-        for (int j = 0; j < W; j++) {
-            res[j][H - i - 1] = v[i][j];
-        }
-    }
-    v = move(res);
-}
-
-//左回転
-template <typename T>
-void VVrotateg(vector<vector<T>> &v) {
-    if (v.empty() || v[0].empty()) return;
-    int H = v.size();
-    int W = v[0].size();
-    vector<vector<T>> res(W, vector<T>(H));
-    for (int i = 0; i < H; i++) {
-        for (int j = 0; j < W; j++) {
-            res[W - j - 1][i] = v[i][j];
-        }
-    }
-    v = move(res);
-}
-void VVrotateg(vector<string> &v) {
-    if (v.empty() || v[0].empty()) return;
-    int H = v.size();
-    int W = v[0].size();
-    vector<string> res(W, string(H, ' '));
-    for (int i = 0; i < H; i++) {
-        for (int j = 0; j < W; j++) {
-            res[W - j - 1][i] = v[i][j];
-        }
-    }
-    v = move(res);
-}
-
-
-
-//!pair関連
-//*入出力
-template <typename T1, typename T2>
-istream &operator>>(istream &is, pair<T1, T2> &p) {
-    is >> p.first >> p.second;
-    return is;
-}
-template <typename T1, typename T2>
-ostream &operator<<(ostream &os, const pair<T1, T2> &p) {
-    os << "(" << p.first << "," << p.second << ")";
-    return os;
-}
-
-
 //*pairと定数の演算
 template <typename T1, typename T2, typename T3>
 requires (!is_pair<T3>)
@@ -541,6 +621,7 @@ pair<T1, T2> &operator%=(pair<T1, T2> &p, const T3 &a) {
     p.second %= a;
     return p;
 }
+
 template <typename T1, typename T2>
 pair<T1, T2> &operator++(pair<T1, T2> &p) {
     ++p.first;
@@ -629,236 +710,6 @@ pair<T1, T2> &operator%=(pair<T1, T2> &p1, const pair<T1, T2> &p2) {
     p1.second %= p2.second;
     return p1;
 }
-
-
-//*pairの操作
-template<typename T>
-void Pswap(pair<T, T> &p) {
-    swap(p.first, p.second);
-}
-template<typename T>
-void Pswap(vector<pair<T, T>> &v) {
-    for (auto &p : v) swap(p.first, p.second);
-}
-
-
-
-//!その他STL関連
-//*入出力
-//map
-template <typename T1, typename T2>
-void mapcin(map<T1, T2> &m, int n) {
-    for (int i = 0; i < n; i++) {
-        T1 x; T2 y;
-        cin >> x >> y;
-        m[x] = y;
-    }
-}
-template <typename T1, typename T2>
-ostream &operator<<(ostream &os, const map<T1, T2> &m) {
-    bool first = true;
-    for (const auto &[key, val] : m) {
-        if (!first) os << " ";
-        os << key << ":" << val;
-        first = false;
-    }
-    return os;
-}
-
-//set
-template <typename T>
-void setcin(set<T> &s, int n) {
-    for (int i = 0; i < n; i++) {
-        T x;
-        cin >> x;
-        s.insert(x);
-    }
-}
-template <typename T>
-ostream &operator<<(ostream &os, const set<T> &s) {
-    bool first = true;
-    for (const auto &x : s) {
-        if (!first) os << " ";
-        os << x;
-        first = false;
-    }
-    return os;
-}
-
-//multiset
-template <typename T>
-void setcin(multiset<T> &s, int n) {
-    for (int i = 0; i < n; i++) {
-        T x;
-        cin >> x;
-        s.insert(x);
-    }
-}
-template <typename T>
-ostream &operator<<(ostream &os, const multiset<T> &s) {
-    bool first = true;
-    for (const auto &x : s) {
-        if (!first) os << " ";
-        os << x;
-        first = false;
-    }
-    return os;
-}
-
-//unordered_map
-template <typename T1, typename T2>
-void mapcin(unordered_map<T1, T2> &m, int n) {
-    for (int i = 0; i < n; i++) {
-        T1 x; T2 y;
-        cin >> x >> y;
-        m[x] = y;
-    }
-}
-template <typename T1, typename T2>
-ostream &operator<<(ostream &os, const unordered_map<T1, T2> &m) {
-    bool first = true;
-    for (const auto &[key, val] : m) {
-        if (!first) os << " ";
-        os << key << ":" << val;
-        first = false;
-    }
-    return os;
-}
-
-//unordered_set
-template <typename T>
-void setcin(unordered_set<T> &s, int n) {
-    for (int i = 0; i < n; i++) {
-        T x;
-        cin >> x;
-        s.insert(x);
-    }
-}
-template <typename T>
-ostream &operator<<(ostream &os, const unordered_set<T> &s) {
-    bool first = true;
-    for (const auto &x : s) {
-        if (!first) os << " ";
-        os << x;
-        first = false;
-    }
-    return os;
-}
-
-//queue
-template <typename T>
-void queuecin(queue<T> &q, int n) {
-    for (int i = 0; i < n; i++) {
-        T x;
-        cin >> x;
-        q.push(x);
-    }
-}
-template <typename T>
-ostream &operator<<(ostream &os, queue<T> q) {
-    bool first = true;
-    while (!q.empty()) {
-        if (!first) os << " ";
-        os << q.front();
-        q.pop();
-        first = false;
-    }
-    return os;
-}
-
-//priority_queue
-template <class T, class Container, class Compare>
-void queuecin(priority_queue<T, Container, Compare> &q, int n) {
-    for (int i = 0; i < n; i++) {
-        T x;
-        cin >> x;
-        q.push(x);
-    }
-}
-template <class T, class Container, class Compare>
-ostream &operator<<(ostream &os, priority_queue<T, Container, Compare> q) {
-    bool first = true;
-    while (!q.empty()) {
-        if (!first) os << " ";
-        os << q.top();
-        q.pop();
-        first = false;
-    }
-    return os;
-}
-
-//deque
-template <typename T>
-void dequecin(deque<T> &q, int n) {
-    for (int i = 0; i < n; i++) {
-        T x;
-        cin >> x;
-        q.push_back(x);
-    }
-}
-template <typename T>
-void queuecin(deque<T> &q, int n) {
-    dequecin(q, n);
-}
-template <typename T>
-ostream &operator<<(ostream &os, const deque<T> &q) {
-    bool first = true;
-    for (const auto &x : q) {
-        if (!first) os << " ";
-        os << x;
-        first = false;
-    }
-    return os;
-}
-
-//stack
-template <typename T>
-void stackcin(stack<T> &s, int n) {
-    for (int i = 0; i < n; i++) {
-        T x;
-        cin >> x;
-        s.push(x);
-    }
-}
-template <typename T>
-ostream &operator<<(ostream &os, stack<T> s) {
-    bool first = true;
-    while (!s.empty()) {
-        if (!first) os << " ";
-        os << s.top();
-        s.pop();
-        first = false;
-    }
-    return os;
-}
-
-//modint
-#if HAS_ACL
-    template <int m>
-    istream &operator>>(istream &is, static_modint<m> &i) {
-        int64_t x;
-        is >> x;
-        i = x;
-        return is;
-    }
-    template <int id>
-    istream &operator>>(istream &is, dynamic_modint<id> &i) {
-        int64_t x;
-        is >> x;
-        i = x;
-        return is;
-    }
-    template <int m>
-    ostream &operator<<(ostream &os, const static_modint<m> &i) {
-        os << i.val();
-        return os;
-    }
-    template <int id>
-    ostream &operator<<(ostream &os, const dynamic_modint<id> &i) {
-        os << i.val();
-        return os;
-    }
-#endif
 
 
 
@@ -1023,6 +874,161 @@ template <typename T1, typename T2>
 bool CHMAX(T1 &x, const T2 &y) {
     if (x < y) x = y;
     return x == y;
+}
+
+
+//*リストの操作
+//小さい順
+template <typename T>
+void Vsort(T &v) {
+    sort(v.begin(), v.end());
+}
+
+//大きい順
+template <typename T>
+void Vsortg(T &v) {
+    sort(v.rbegin(), v.rend());
+}
+
+//リバース
+template <typename T>
+void Vreverse(T &v) {
+    reverse(v.begin(), v.end());
+}
+
+//重複の削除 ソート必須！
+template <typename T>
+void Vunique(T &v) {
+    v.erase(unique(v.begin(), v.end()), v.end());
+}
+
+//上下反転
+template <typename T>
+void UDflip(vector<T> &v) {
+    reverse(v.begin(), v.end());
+}
+
+//左右反転
+template <typename T>
+void LRflip(vector<T> &v) {
+    for (auto &x : v) reverse(x.begin(), x.end());
+}
+
+//左シフト
+template <typename T>
+void Vrotate(T &v, int64_t n) {
+    if (v.empty()) return;
+    n %= (int64_t)v.size();
+    if (n < 0) n += (int64_t)v.size();
+    rotate(v.begin(), v.begin() + n, v.end());
+}
+
+//最小値
+template <typename T>
+auto Vmin(const T &v) {
+    assert(!v.empty());
+    return *min_element(v.begin(), v.end());
+}
+
+//最大値
+template <typename T>
+auto Vmax(const T &v) {
+    assert(!v.empty());
+    return *max_element(v.begin(), v.end());
+}
+
+//総和
+template <typename T>
+T Vsum(const vector<T> &v) {
+    return accumulate(v.begin(), v.end(), T(0));
+}
+
+//ソートしたindexを取得
+template <typename T>
+vector<int> Vargsort(const vector<T> &v) {
+    vector<int> res(v.size());
+    iota(res.begin(), res.end(), 0);
+    sort(res.begin(), res.end(), [&](int i, int j) {
+        if (v[i] != v[j]) return v[i] < v[j];
+        return i < j;
+    });
+    return res;
+}
+//大きい順ソートしたindexを取得
+template <typename T>
+vector<int> Vargsortg(const vector<T> &v) {
+    vector<int> res(v.size());
+    iota(res.begin(), res.end(), 0);
+    sort(res.begin(), res.end(), [&](int i, int j) {
+        if (v[i] != v[j]) return v[i] > v[j];
+        return i < j;
+    });
+    return res;
+}
+
+//右回転
+template <typename T>
+void VVrotate(vector<vector<T>> &v) {
+    if (v.empty() || v[0].empty()) return;
+    int H = v.size();
+    int W = v[0].size();
+    vector<vector<T>> res(W, vector<T>(H));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            res[j][H - i - 1] = v[i][j];
+        }
+    }
+    v = move(res);
+}
+void VVrotate(vector<string> &v) {
+    if (v.empty() || v[0].empty()) return;
+    int H = v.size();
+    int W = v[0].size();
+    vector<string> res(W, string(H, ' '));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            res[j][H - i - 1] = v[i][j];
+        }
+    }
+    v = move(res);
+}
+
+//左回転
+template <typename T>
+void VVrotateg(vector<vector<T>> &v) {
+    if (v.empty() || v[0].empty()) return;
+    int H = v.size();
+    int W = v[0].size();
+    vector<vector<T>> res(W, vector<T>(H));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            res[W - j - 1][i] = v[i][j];
+        }
+    }
+    v = move(res);
+}
+void VVrotateg(vector<string> &v) {
+    if (v.empty() || v[0].empty()) return;
+    int H = v.size();
+    int W = v[0].size();
+    vector<string> res(W, string(H, ' '));
+    for (int i = 0; i < H; i++) {
+        for (int j = 0; j < W; j++) {
+            res[W - j - 1][i] = v[i][j];
+        }
+    }
+    v = move(res);
+}
+
+
+//*pairの操作
+template<typename T>
+void Pswap(pair<T, T> &p) {
+    swap(p.first, p.second);
+}
+template<typename T>
+void Pswap(vector<pair<T, T>> &v) {
+    for (auto &p : v) swap(p.first, p.second);
 }
 
 

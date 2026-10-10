@@ -8,10 +8,8 @@ OUTPUT = ROOT / "template.cpp"
 # 結合するファイル（順番も指定）
 FILES = [
     "base.hpp",
-    "prototype.hpp",
-    "vector.hpp",
-    "pair.hpp",
-    "stl.hpp",
+    "io.hpp",
+    "operators.hpp",
     "utilities.hpp",
     "seg_tree.hpp",
     "math.hpp",
