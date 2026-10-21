@@ -1,0 +1,15 @@
+# Private development tools
+/bundle.py
+/generate_all.py
+
+# Generated files
+/include/all.hpp
+
+# Python
+__pycache__/
+*.pyc
+
+# C++ build files
+*.o
+*.out
+*.exe
