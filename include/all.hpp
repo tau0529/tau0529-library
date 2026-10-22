@@ -4,3 +4,4 @@
 #include "data_structures/UnionFind.hpp"
 #include "data_structures/WeightedUnionFind.hpp"
 #include "data_structures/SegmentTree.hpp"
+#include "data_structures/SparseTable.hpp"
