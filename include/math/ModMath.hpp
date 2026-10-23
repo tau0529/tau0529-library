@@ -109,7 +109,7 @@ struct ModMath {
     int64_t nHr(int n, int r) {
         assert(n >= 0 && r >= 0);
         if (n == 0) return r == 0;
-        return nCr(n + r - 1, r);
+        return nCr((int64_t)n + r - 1, r);
     }
 
     /// @brief 多項係数
@@ -118,7 +118,7 @@ struct ModMath {
     /// @note O(v.size()) (非拡張時)
     template <typename T>
     int64_t multinomial(const vector<T> &v) {
-        int n = 0;
+        int64_t n = 0;
         for (auto x : v) {
             assert(x >= 0);
             n += x;
