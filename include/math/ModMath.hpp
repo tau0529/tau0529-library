@@ -40,7 +40,7 @@ struct ModMath {
     /// @brief 事前計算範囲の拡張
     /// @param n 事前計算する最大値
     /// @pre n < mod
-    /// @note O(n - 現在の最大値)
+    /// @note 拡張時 O(n - 現在の最大値) 非拡張時 O(1)
     void extend(int n) {
         assert(0 <= n && n < mod);
         n = max(2, n);
@@ -101,5 +101,31 @@ struct ModMath {
         if (r < 0 || n < r) return 0;
         extend(n);
         return fact_[n] * ifact_[r] % mod * ifact_[n - r] % mod;
+    }
+
+    /// @brief nHr
+    /// @pre n >= 0, r >= 0
+    /// @note O(1)（非拡張時）
+    int64_t nHr(int n, int r) {
+        assert(n >= 0 && r >= 0);
+        if (n == 0) return r == 0;
+        return nCr(n + r - 1, r);
+    }
+
+    /// @brief 多項係数
+    /// @param v 各項の個数
+    /// @pre すべての項は0以上であること
+    /// @note O(v.size()) (非拡張時)
+    template <typename T>
+    int64_t multinomial(const vector<T> &v) {
+        int n = 0;
+        for (auto x : v) {
+            assert(x >= 0);
+            n += x;
+        }
+        extend(n);
+        int64_t res = fact_[n];
+        for (auto x : v) res = res * ifact_[x] % mod;
+        return res;
     }
 };
