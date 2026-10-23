@@ -37,6 +37,25 @@ struct ModMath {
         }
     }
 
+    /// @brief 事前計算範囲の拡張
+    /// @param n 事前計算する最大値
+    /// @pre n < mod
+    /// @note O(n - 現在の最大値)
+    void extend(int n) {
+        assert(0 <= n && n < mod);
+        int old = fact_.size();
+        if (n < old) return;
+        inv_.resize(n + 1);
+        fact_.resize(n + 1);
+        ifact_.resize(n + 1);
+        for (int i = old; i <= n; i++) {
+            if (i == 1) inv_[1] = 1;
+            else inv_[i] = mod - (mod / i) * inv_[mod % i] % mod;
+            fact_[i] = fact_[i - 1] * i % mod;
+            ifact_[i] = ifact_[i - 1] * inv_[i] % mod;
+        }
+    }
+
     /// @brief 逆元
     /// @pre 1 <= n <= 事前計算した最大値
     /// @note O(1)
