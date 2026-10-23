@@ -45,6 +45,7 @@ bool is_prime(int64_t n) {
 /// @return n 以下の値が素数であるか
 /// @pre n >= 0
 /// @note O(n log log n)
+/// @see https://judge.yosupo.jp/submission/412844
 vector<bool> eratosthenes(int64_t n) {
     vector<bool> res(n + 1, true);
     res[0] = false;
@@ -61,6 +62,7 @@ vector<bool> eratosthenes(int64_t n) {
 /// @return n 以下の素数一覧
 /// @pre n >= 0
 /// @note O(n log log n)
+/// @see https://judge.yosupo.jp/submission/412844
 vector<int64_t> prime_list(int64_t n) {
     vector<bool> P = eratosthenes(n);
     vector<int64_t> res;
