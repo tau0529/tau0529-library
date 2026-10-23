@@ -3,6 +3,7 @@
 
 /// @brief mod上の計算
 /// @pre modは素数
+/// @note 大体3e7の構築が1秒です 最初に全部構築したほうが早い
 struct ModMath {
     int64_t mod;
     vector<int64_t> inv_, fact_, ifact_;
