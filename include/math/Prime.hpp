@@ -1,9 +1,6 @@
 #pragma once
 #include "../base.hpp"
 
-//ミラーラビンの素数判定(int128式)
-//https://judge.yosupo.jp/submission/412833
-
 /// @brief ミラーラビンの素数判定
 /// @return 素数なら true
 /// @note O(log n)
