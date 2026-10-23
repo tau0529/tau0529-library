@@ -49,7 +49,7 @@ struct ModMath {
         inv_.resize(n + 1);
         fact_.resize(n + 1);
         ifact_.resize(n + 1);
-        for (int i = old; i <= n; i++) {
+        for (int64_t i = old; i <= n; i++) {
             inv_[i] = mod - (mod / i) * inv_[mod % i] % mod;
             fact_[i] = fact_[i - 1] * i % mod;
             ifact_[i] = ifact_[i - 1] * inv_[i] % mod;
