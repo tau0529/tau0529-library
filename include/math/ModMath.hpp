@@ -24,14 +24,14 @@ struct ModMath {
     /// @pre m は素数
     /// @note O(n)
     void init(int n, int64_t m = 998244353) {
+        n = max(2, n);
         mod = m;
         assert(2 <= mod && mod < INT_MAX && 0 <= n && n < mod);
-        inv_.assign(n + 1, 0);
+        inv_.assign(n + 1, 1);
         fact_.assign(n + 1, 1);
         ifact_.assign(n + 1, 1);
-        for (int64_t i = 1; i <= n; i++) {
-            if (i == 1) inv_[1] = 1;
-            else inv_[i] = mod - (mod / i) * inv_[mod % i] % mod;
+        for (int64_t i = 2; i <= n; i++) {
+            inv_[i] = mod - (mod / i) * inv_[mod % i] % mod;
             fact_[i] = fact_[i - 1] * i % mod;
             ifact_[i] = ifact_[i - 1] * inv_[i] % mod;
         }
@@ -43,58 +43,63 @@ struct ModMath {
     /// @note O(n - 現在の最大値)
     void extend(int n) {
         assert(0 <= n && n < mod);
+        n = max(2, n);
         int old = fact_.size();
         if (n < old) return;
         inv_.resize(n + 1);
         fact_.resize(n + 1);
         ifact_.resize(n + 1);
         for (int i = old; i <= n; i++) {
-            if (i == 1) inv_[1] = 1;
-            else inv_[i] = mod - (mod / i) * inv_[mod % i] % mod;
+            inv_[i] = mod - (mod / i) * inv_[mod % i] % mod;
             fact_[i] = fact_[i - 1] * i % mod;
             ifact_[i] = ifact_[i - 1] * inv_[i] % mod;
         }
     }
 
     /// @brief 逆元
-    /// @pre 1 <= n <= 事前計算した最大値
-    /// @note O(1)
-    int64_t inv(int n) const {
-        assert(1 <= n && n < (int)inv_.size());
+    /// @pre n >= 1
+    /// @note O(1)（非拡張時）
+    int64_t inv(int n) {
+        assert(n >= 1);
+        extend(n);
         return inv_[n];
     }
 
     /// @brief 階乗
-    /// @pre 0 <= n <= 事前計算した最大値
-    /// @note O(1)
-    int64_t fact(int n) const {
-        assert(0 <= n && n < (int)fact_.size());
+    /// @pre n >= 0
+    /// @note O(1)（非拡張時）
+    int64_t fact(int n) {
+        assert(n >= 0);
+        extend(n);
         return fact_[n];
     }
 
     /// @brief 階乗の逆元
-    /// @pre 0 <= n <= 事前計算した最大値
-    /// @note O(1)
-    int64_t ifact(int n) const {
-        assert(0 <= n && n < (int)ifact_.size());
+    /// @pre n >= 0
+    /// @note O(1)（非拡張時）
+    int64_t ifact(int n) {
+        assert(n >= 0);
+        extend(n);
         return ifact_[n];
     }
 
     /// @brief nPr
-    /// @pre 0 <= n <= 事前計算した最大値
-    /// @note O(1)
-    int64_t nPr(int n, int r) const {
-        assert(0 <= n && n < (int)fact_.size());
+    /// @pre n >= 0
+    /// @note O(1)（非拡張時）
+    int64_t nPr(int n, int r) {
+        assert(n >= 0);
         if (r < 0 || n < r) return 0;
+        extend(n);
         return fact_[n] * ifact_[n - r] % mod;
     }
 
     /// @brief nCr
-    /// @pre 0 <= n <= 事前計算した最大値
-    /// @note O(1)
-    int64_t nCr(int n, int r) const {
-        assert(0 <= n && n < (int)fact_.size());
+    /// @pre n >= 0
+    /// @note O(1)（非拡張時）
+    int64_t nCr(int n, int r) {
+        assert(n >= 0);
         if (r < 0 || n < r) return 0;
+        extend(n);
         return fact_[n] * ifact_[r] % mod * ifact_[n - r] % mod;
     }
 };
