@@ -109,6 +109,7 @@ struct ModMath {
     int64_t nHr(int n, int r) {
         assert(n >= 0 && r >= 0);
         if (n == 0) return r == 0;
+        assert((int64_t)n + r - 1 < mod);
         return nCr(n + r - 1, r);
     }
 
@@ -123,6 +124,7 @@ struct ModMath {
             assert(x >= 0);
             n += x;
         }
+        assert(n < mod);
         extend(n);
         int64_t res = fact_[n];
         for (auto x : v) res = res * ifact_[x] % mod;
